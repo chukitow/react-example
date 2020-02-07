@@ -1,4 +1,5 @@
 import validatejs from 'validate.js';
+import { pick } from 'lodash'
 
 export const welcomeSchema = {
   gender: {
@@ -15,6 +16,31 @@ export const welcomeSchema = {
     presence: true,
     length: {
       minimum: 8
+    }
+  },
+}
+
+export const basicInfoSchema = {
+  ...(pick(['gender', 'gender_target'], welcomeSchema)),
+  first_name: {
+    presence: {
+      allowEmpty: false
+    },
+  },
+  last_initial: {
+    presence: {
+      allowEmpty: false
+    }
+  },
+  age: {
+    presence: {
+      allowEmpty: false
+    },
+    type: 'integer'
+  },
+  location: {
+    presence: {
+      allowEmpty: false
     }
   },
 }

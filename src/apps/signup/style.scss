@@ -22,4 +22,26 @@
       }
     }
   }
+
+  .step-bar {
+    .divider {
+      width: 1px;
+      background-color: $stepbar-gray;
+      height: 100px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .step {
+      span {
+        margin-right: 20px;
+      }
+    }
+
+    .step.active {
+      span {
+        color: $stepbar-green;
+      }
+    }
+  }
 }

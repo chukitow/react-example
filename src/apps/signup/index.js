@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-  Redirect,
   useHistory
 } from 'react-router-dom';
 import 'apps/signup/style.scss';
-import Welcome from './components/Welcome';
 import { Container } from 'react-bootstrap';
+import Welcome from './components/Welcome';
+import StepOne from './components/StepOne';
 
 const Signup = () => {
   const [signupInformation, updateData] = useState({});
   const history = useHistory();
 
   const STEPS = {
-    "/step_1": (props = {}) => <Welcome {...props}/>,
+    "/welcome": (props = {}) => <Welcome {...props}/>,
+    "/step_1": (props = {}) => <StepOne {...props}/>,
   };
 
   const goTo = (step) => {
@@ -28,9 +29,12 @@ const Signup = () => {
   }
 
   const stepsProps = {
+    "/welcome": {
+      next: () => goTo('/signup/step_1'),
+    },
     "/step_1": {
-      next: () => goTo('/step_2'),
-    }
+      next: () => goTo('/signup/step_2'),
+    },
   };
 
   const buildWizard = () =>
@@ -50,7 +54,6 @@ const Signup = () => {
         </div>
         <Router basename="/signup">
           {buildWizard()}
-          <Redirect to="/step_1" />
         </Router>
       </Container>
     </div>
