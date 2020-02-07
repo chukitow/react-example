@@ -1,0 +1,25 @@
+@import 'assets/styles/config/colors';
+
+.signup {
+  .header {
+    min-height: 140px;
+    width: 100%;
+    background-color: $gray-header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcome-page {
+    .title {
+      height: 200px;
+    }
+
+    .footer {
+      height: 100px;
+      span {
+        margin: 5px;
+      }
+    }
+  }
+}
