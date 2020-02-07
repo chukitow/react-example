@@ -45,6 +45,7 @@ const Welcome = ({
                         <Col xs={3}>
                           <Form.Check
                             {...inputProps}
+                            checked={values.gender === 'woman'}
                             id="gender_woman"
                             name="gender"
                             type="radio"
@@ -54,6 +55,7 @@ const Welcome = ({
                         <Col xs={3}>
                           <Form.Check
                             {...inputProps}
+                            checked={values.gender === 'man'}
                             id="gende_man"
                             name="gender"
                             type="radio"
@@ -71,6 +73,7 @@ const Welcome = ({
                         <Col xs={3}>
                           <Form.Check
                             {...inputProps}
+                            checked={values.gender_target === 'woman'}
                             id="gender_target_woman"
                             name="gender_target"
                             type='radio'
@@ -80,6 +83,7 @@ const Welcome = ({
                         <Col xs={3}>
                           <Form.Check
                             {...inputProps}
+                            checked={values.gender_target === 'man'}
                             id="gender_target_man"
                             name="gender_target"
                             type='radio'
