@@ -43,11 +43,19 @@ export const basicInfoSchema = {
       allowEmpty: false
     }
   },
-}
+};
+
+export const imagesSchema = {
+  profile_picture: {
+    presence: true
+  }
+};
 
 const schema = {
   ...welcomeSchema,
-}
+  ...basicInfoSchema,
+  ...imagesSchema,
+};
 
 export const validate = validatejs;
 export default (values) => validatejs(values, schema);
