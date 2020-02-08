@@ -6,7 +6,7 @@ import { imagesSchema, validate } from '../validations';
 import { toBase64 } from '../helpers';
 import StepBar from './common/StepBar';
 
-const StepTwo = ({
+const ProfilePicture = ({
   signupInformation,
   updateData,
   saveAndContinue,
@@ -46,8 +46,10 @@ const StepTwo = ({
                     <label className="profile-picture-input btn btn-primary">
                       <input
                         onChange={async (e) => {
-                          const base64ProfileImage = await toBase64(e.target.files[0]);
-                          setFieldValue('profile_picture', base64ProfileImage);
+                          if(e.target.files[0]) {
+                            const base64ProfileImage = await toBase64(e.target.files[0]);
+                            setFieldValue('profile_picture', base64ProfileImage);
+                          }
                         }}
                         type="file"
                         name="profile_picture"
@@ -74,11 +76,11 @@ const StepTwo = ({
   )
 };
 
-StepTwo.StepTwo = {
+ProfilePicture.ProfilePicture = {
   signupInformation: PropTypes.object,
   saveAndContinue: PropTypes.func,
   updateData: PropTypes.func,
   nexta: PropTypes.func,
 };
 
-export default StepTwo;
+export default ProfilePicture;

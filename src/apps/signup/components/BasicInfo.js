@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { basicInfoSchema, validate } from '../validations';
 import StepBar from './common/StepBar';
 
-const StepOne = ({
+const BasicInfo = ({
   signupInformation,
   updateData,
   next
@@ -148,10 +148,10 @@ const StepOne = ({
   )
 };
 
-StepOne.propTypes = {
+BasicInfo.propTypes = {
   signupInformation: PropTypes.object,
   updateData: PropTypes.func,
   nexta: PropTypes.func,
 };
 
-export default StepOne;
+export default BasicInfo;

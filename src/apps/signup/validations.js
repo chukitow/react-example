@@ -51,10 +51,33 @@ export const imagesSchema = {
   }
 };
 
+export const detailsSchema = {
+  children: {
+    presence: {
+      allowEmpty: false
+    }
+  },
+  smoke: {
+    presence: {
+      allowEmpty: false
+    }
+  },
+  drink: {
+    presence: true
+  },
+  relationship_status: {
+    presence: true
+  },
+  education: {
+    presence: true
+  },
+}
+
 const schema = {
   ...welcomeSchema,
   ...basicInfoSchema,
   ...imagesSchema,
+  ...detailsSchema
 };
 
 export const validate = validatejs;
