@@ -8,9 +8,10 @@ import {
 import 'apps/signup/style.scss';
 import { Container } from 'react-bootstrap';
 import Welcome from './components/Welcome';
-import StepOne from './components/StepOne';
-import StepTwo from './components/StepTwo';
-import { saveAndContinue, getSignupInformation } from './helpers';
+import BasicInfo from './components/BasicInfo';
+import ProfilePicture from './components/ProfilePicture';
+import Details from './components/Details';
+import { saveAndContinue as saveLocally, getSignupInformation } from './helpers';
 
 const Signup = () => {
   const [signupInformation, setSignupInformation] = useState(getSignupInformation());
@@ -26,8 +27,9 @@ const Signup = () => {
 
   const STEPS = {
     "/welcome": (props = {}) => <Welcome {...props}/>,
-    "/step_1": (props = {}) => <StepOne {...props}/>,
-    "/step_2": (props = {}) => <StepTwo {...props}/>,
+    "/step_1": (props = {}) => <BasicInfo {...props}/>,
+    "/step_2": (props = {}) => <ProfilePicture {...props}/>,
+    "/step_3": (props = {}) => <Details {...props}/>,
   };
 
   const goTo = (step) => {
@@ -39,6 +41,10 @@ const Signup = () => {
     updateData,
   }
 
+  const saveAndContinue = (values) => {
+    saveLocally(updateData(values));
+  }
+
   const stepsProps = {
     "/welcome": {
       next: () => goTo('/signup/step_1'),
@@ -48,11 +54,14 @@ const Signup = () => {
     },
     "/step_2": {
       next: () => goTo('/signup/step_3'),
-      saveAndContinue: (values) => {
-        saveAndContinue(updateData(values));
-      },
+      saveAndContinue,
       goBack: () => goTo('/signup/step_1'),
     },
+    "/step_3": {
+      next: () => goTo('/signup/step_4'),
+      saveAndContinue,
+      goBack: () => goTo('/signup/step_2'),
+    }
   };
 
   const buildWizard = () =>
