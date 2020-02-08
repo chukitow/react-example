@@ -23,7 +23,10 @@ const Welcome = ({
             initialErrors={validate(signupInformation, welcomeSchema)}
             validate={(values) => validate(values, welcomeSchema)}
             onSubmit={(values) => {
-              updateData(values);
+              updateData({
+                ...signupInformation,
+                ...values
+              });
               next();
             }}
             initialValues={signupInformation}>
@@ -96,12 +99,14 @@ const Welcome = ({
                     <Form.Group controlId="email">
                       <Form.Control
                         {...inputProps}
+                        value={values.email}
                         type="email"
                         placeholder="Enter your email address" />
                     </Form.Group>
                     <Form.Group controlId="password">
                       <Form.Control
                         {...inputProps}
+                        value={values.password}
                         type="password"
                         placeholder="Create your password" />
                     </Form.Group>

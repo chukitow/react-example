@@ -44,4 +44,29 @@
       }
     }
   }
+
+  .go-back {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .step-2 {
+    .profile-picture {
+      &-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      &-container {
+        height: 300px;
+        border: 1px solid $gray-header;
+      }
+
+      &-input {
+        input[type="file"] {
+          display: none;
+        }
+      }
+    }
+  }
 }
