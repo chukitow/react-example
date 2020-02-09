@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import StepBar from './common/StepBar';
-import { detailsSchema, validate } from '../validations';
+import { targetDetailsSchema, validate } from '../validations';
 import { get } from 'lodash';
 
-const TARGET_OPTIONS = [
+export const TARGET_OPTIONS = [
   {
     label: 'Relationship Status',
     name: 'target_relationship_status',
@@ -154,8 +154,8 @@ const LookingFor = ({
           <h3>What are you looking for?</h3>
           <p>Please answer the following questions related to what you're seeking in a partner.</p>
           <Formik
-            initialErrors={validate(signupInformation, detailsSchema)}
-            validate={(values) => validate(values, detailsSchema)}
+            initialErrors={validate(signupInformation, targetDetailsSchema)}
+            validate={(values) => validate(values, targetDetailsSchema)}
             onSubmit={(values) => {
               updateData(values);
               next();
@@ -169,8 +169,6 @@ const LookingFor = ({
               isValid
             }) => {
               const inputProps = { onChange: handleChange };
-              console.log(values);
-
               return (
                 <Form onSubmit={handleSubmit}>
                   {

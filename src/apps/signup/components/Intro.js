@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { welcomeSchema, validate } from '../validations';
+import { introSchema, validate } from '../validations';
 
-const Welcome = ({
+const Intro = ({
   signupInformation,
   updateData,
   next
 }) => {
   return (
-    <div className="welcome-page">
+    <div className="intro-page">
       <div className="title d-flex justify-content-center align-items-center">
         <h2>
           Find your Next great love with the <br/>
@@ -20,8 +20,8 @@ const Welcome = ({
       <Row>
         <Col xs={6}>
           <Formik
-            initialErrors={validate(signupInformation, welcomeSchema)}
-            validate={(values) => validate(values, welcomeSchema)}
+            initialErrors={validate(signupInformation, introSchema)}
+            validate={(values) => validate(values, introSchema)}
             onSubmit={(values) => {
               updateData({
                 ...signupInformation,
@@ -137,10 +137,10 @@ const Welcome = ({
   );
 }
 
-Welcome.propTypes = {
+Intro.propTypes = {
   signupInformation: PropTypes.object,
   updateData: PropTypes.func,
   nexta: PropTypes.func,
 };
 
-export default Welcome;
+export default Intro;

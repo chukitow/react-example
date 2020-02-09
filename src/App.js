@@ -14,7 +14,7 @@ function App() {
         <Route path="/signup">
           <Signup />
         </Route>
-        <Redirect to="/signup/welcome" />
+        <Redirect to="/signup/intro" />
       </Switch>
     </Router>
   );

@@ -6,13 +6,19 @@ import StepBar from './common/StepBar';
 import Select from 'react-select';
 import { detailsSchema, validate } from '../validations';
 
-const RELATIONSHIP_OPTIONS = [
+export const DETAILS_OPTIONS = {
+  yes: 'Yes',
+  no: 'No',
+  occasionally: 'Occasionally',
+};
+
+export const RELATIONSHIP_OPTIONS = [
   { label: 'Single, never married', value: 'single' },
   { label: 'Divorced', value: 'divorced' },
   { label: 'Widowed', value: 'widowed' },
 ];
 
-const EDUCATION_OPTIONS = [
+export const EDUCATION_OPTIONS = [
   { label: 'High School', value: 'high_school' },
   { label: 'Bachelor\'s Degree', value: 'bachelor_degree' },
   { label: 'Graduate Degree', value: 'graduate_degree' },
