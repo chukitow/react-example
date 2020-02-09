@@ -1,7 +1,8 @@
 import validatejs from 'validate.js';
 import { pick } from 'lodash'
+import { TARGET_OPTIONS } from './components/LookingFor';
 
-export const welcomeSchema = {
+export const introSchema = {
   gender: {
     presence: true,
   },
@@ -21,7 +22,7 @@ export const welcomeSchema = {
 }
 
 export const basicInfoSchema = {
-  ...(pick(['gender', 'gender_target'], welcomeSchema)),
+  ...(pick(['gender', 'gender_target'], introSchema)),
   first_name: {
     presence: {
       allowEmpty: false
@@ -71,13 +72,25 @@ export const detailsSchema = {
   education: {
     presence: true
   },
-}
+};
+
+export const targetDetailsSchema = (
+  () => TARGET_OPTIONS.reduce((acc, val) => ({
+    ...acc,
+    [val.name]: {
+      presence: {
+        allowEmpty: false
+      }
+    }
+  }), [])
+)();
 
 const schema = {
-  ...welcomeSchema,
+  ...introSchema,
   ...basicInfoSchema,
   ...imagesSchema,
-  ...detailsSchema
+  ...detailsSchema,
+  ...targetDetailsSchema
 };
 
 export const validate = validatejs;

@@ -7,11 +7,12 @@ import {
 } from 'react-router-dom';
 import 'apps/signup/style.scss';
 import { Container } from 'react-bootstrap';
-import Welcome from './components/Welcome';
+import Intro from './components/Intro';
 import BasicInfo from './components/BasicInfo';
 import ProfilePicture from './components/ProfilePicture';
 import Details from './components/Details';
 import LookingFor from './components/LookingFor';
+import Review from './components/Review';
 import { saveAndContinue as saveLocally, getSignupInformation } from './helpers';
 
 const Signup = () => {
@@ -27,11 +28,12 @@ const Signup = () => {
   }
 
   const STEPS = {
-    "/welcome": (props = {}) => <Welcome {...props}/>,
+    "/intro": (props = {}) => <Intro {...props}/>,
     "/step_1": (props = {}) => <BasicInfo {...props}/>,
     "/step_2": (props = {}) => <ProfilePicture {...props}/>,
     "/step_3": (props = {}) => <Details {...props}/>,
     "/step_4": (props = {}) => <LookingFor {...props}/>,
+    "/step_5": (props = {}) => <Review {...props}/>,
   };
 
   const goTo = (step) => {
@@ -48,7 +50,7 @@ const Signup = () => {
   }
 
   const stepsProps = {
-    "/welcome": {
+    "/intro": {
       next: () => goTo('/signup/step_1'),
     },
     "/step_1": {
@@ -68,6 +70,9 @@ const Signup = () => {
       next: () => goTo('/signup/step_5'),
       saveAndContinue,
       goBack: () => goTo('/signup/step_3'),
+    },
+    "/step_5": {
+      goTo,
     },
   };
 
