@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { Formik } from 'formik';
 import StepBar from './common/StepBar';
+import FormFooter from './common/FormFooter';
 import { targetDetailsSchema, validate } from '../validations';
 import { get } from 'lodash';
 
@@ -145,66 +146,78 @@ const LookingFor = ({
   goBack
 }) => {
   return (
-    <div className="step-4">
-      <Row>
-        <Col xs={4}>
-          <StepBar />
-        </Col>
-        <Col xs={5}>
-          <h3>What are you looking for?</h3>
-          <p>Please answer the following questions related to what you're seeking in a partner.</p>
-          <Formik
-            initialErrors={validate(signupInformation, targetDetailsSchema)}
-            validate={(values) => validate(values, targetDetailsSchema)}
-            onSubmit={(values) => {
-              updateData(values);
-              next();
-            }}
-            initialValues={signupInformation}>
-            {({
-              values,
-              handleChange,
-              handleSubmit,
-              setFieldValue,
-              isValid
-            }) => {
-              const inputProps = { onChange: handleChange };
-              return (
-                <Form onSubmit={handleSubmit}>
-                  {
-                    TARGET_OPTIONS.map(options => (
-                      <Form.Group controlId={options.name} key={options.name}>
-                        <Form.Label>{options.label}</Form.Label>
-                        {options.options.map(option => (
-                          <Form.Check
-                            {...inputProps}
-                            checked={get(values, options.name, []).includes(option.value)}
-                            key={`${options.name}_${option.value}`}
-                            id={`${options.name}_${option.value}`}
-                            name={options.name}
-                            type="checkbox"
-                            value={option.value}
-                            label={option.label}/>
-                        ))}
-                      </Form.Group>
-                    ))
-                  }
-                  <div className="d-flex flex-column">
-                    <Button disabled={!isValid} variant="primary" type="submit">
-                      Continue
-                    </Button>
-                    <Button variant="success" onClick={() => saveAndContinue(values)}>
-                      Save & Complete later
-                    </Button>
-                    <span className="text-center go-back"  onClick={goBack}>Click here to go back to the previous page</span>
-                  </div>
-                </Form>
-              )
-            }}
-          </Formik>
-        </Col>
-      </Row>
-    </div>
+    <>
+      <Container>
+        <div className="step-4">
+          <Row>
+            <Col xs={4}>
+              <StepBar />
+            </Col>
+            <Col xs={5}>
+              <span className="step-intro-header">What are you looking for?</span>
+              <p>Please answer the following questions related to what you're seeking in a partner.</p>
+              <Formik
+                initialErrors={validate(signupInformation, targetDetailsSchema)}
+                validate={(values) => validate(values, targetDetailsSchema)}
+                onSubmit={(values) => {
+                  updateData(values);
+                  next();
+                }}
+                initialValues={signupInformation}>
+                {({
+                  values,
+                  handleChange,
+                  handleSubmit,
+                  setFieldValue,
+                  isValid
+                }) => {
+                  const inputProps = { onChange: handleChange };
+                  return (
+                    <Form onSubmit={handleSubmit}>
+                      {
+                        TARGET_OPTIONS.map(options => (
+                          <Form.Group controlId={options.name} key={options.name}>
+                            <Form.Label>{options.label}</Form.Label>
+                            {options.options.map(option => (
+                              <Form.Check
+                                {...inputProps}
+                                checked={get(values, options.name, []).includes(option.value)}
+                                key={`${options.name}_${option.value}`}
+                                id={`${options.name}_${option.value}`}
+                                name={options.name}
+                                type="checkbox"
+                                value={option.value}
+                                label={option.label}/>
+                            ))}
+                          </Form.Group>
+                        ))
+                      }
+                      <div className="d-flex flex-column">
+                        <Button
+                          className="btn-block"
+                          disabled={!isValid}
+                          variant="primary"
+                          type="submit">
+                          Continue
+                        </Button>
+                        <Button
+                          className="btn-block btn-save"
+                          variant="success"
+                          onClick={() => saveAndContinue(values)}>
+                          Save & Complete later
+                        </Button>
+                        <span className="text-center go-back"  onClick={goBack}>Click here to go back to the previous page</span>
+                      </div>
+                    </Form>
+                  )
+                }}
+              </Formik>
+            </Col>
+          </Row>
+        </div>
+      </Container>
+      <FormFooter />
+    </>
   )
 };
 
