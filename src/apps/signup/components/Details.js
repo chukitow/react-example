@@ -104,7 +104,7 @@ const Details = ({
                       value="occasionally"
                       label="Occasionally"/>
                   </Form.Group>
-                  <Form.Group controlId="smoke">
+                  <Form.Group controlId="drink">
                     <Form.Label>Do you drink?</Form.Label>
                     <Form.Check
                       {...inputProps}

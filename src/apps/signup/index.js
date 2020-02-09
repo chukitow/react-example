@@ -11,6 +11,7 @@ import Welcome from './components/Welcome';
 import BasicInfo from './components/BasicInfo';
 import ProfilePicture from './components/ProfilePicture';
 import Details from './components/Details';
+import LookingFor from './components/LookingFor';
 import { saveAndContinue as saveLocally, getSignupInformation } from './helpers';
 
 const Signup = () => {
@@ -30,6 +31,7 @@ const Signup = () => {
     "/step_1": (props = {}) => <BasicInfo {...props}/>,
     "/step_2": (props = {}) => <ProfilePicture {...props}/>,
     "/step_3": (props = {}) => <Details {...props}/>,
+    "/step_4": (props = {}) => <LookingFor {...props}/>,
   };
 
   const goTo = (step) => {
@@ -61,7 +63,12 @@ const Signup = () => {
       next: () => goTo('/signup/step_4'),
       saveAndContinue,
       goBack: () => goTo('/signup/step_2'),
-    }
+    },
+    "/step_4": {
+      next: () => goTo('/signup/step_5'),
+      saveAndContinue,
+      goBack: () => goTo('/signup/step_3'),
+    },
   };
 
   const buildWizard = () =>
