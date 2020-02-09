@@ -1,0 +1,80 @@
+.signup {
+  form {
+    .form-label {
+      font-weight: 200;
+      font-size: 24px;
+    }
+
+    .form-control {
+      font-weight: 400;
+      font-size: 20px;
+      height: 58px;
+      border-radius: 0px;
+      border-color: $input-border;
+    }
+  }
+
+  .checbox-border.form-check {
+    height: 41px;
+    min-width: 128px;
+    margin-bottom: 5px;
+    border: 1px solid $input-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-check-input {
+      position: relative;
+    }
+
+    .form-check-label {
+      margin-bottom: -3px;
+      margin-left: 14px;
+    }
+  }
+
+  .btn-block {
+    text-transform: uppercase;
+    height: 76px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #FFF;
+    background-color: $btn-block;
+    border-radius: 0px;
+    border-color: $btn-block;
+    &:active {
+      background-color: $btn-block !important;
+      border-color: $btn-block !important;
+    }
+  }
+
+  .btn-save {
+    color: $btn-save-color;
+    background-color: $btn-save;
+    border-color: $btn-save;
+    &:active {
+      background-color: $btn-save !important;
+      border-color: $btn-save !important;
+    }
+  }
+
+  .btn-edit {
+    height: 35px;
+    width: 200px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0px;
+    background-color: $link-back;
+    border-color: $link-back;
+    &:active {
+      background-color: $link-back !important;
+      border-color: $link-back !important;
+    }
+  }
+
+  .go-back {
+    color: $link-back;
+    font-size: 24px;
+    text-decoration: underline;
+  }
+}

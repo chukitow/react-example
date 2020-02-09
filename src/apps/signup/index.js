@@ -6,7 +6,7 @@ import {
   useHistory
 } from 'react-router-dom';
 import 'apps/signup/style.scss';
-import { Container } from 'react-bootstrap';
+import logo from 'assets/images/logo.png';
 import Intro from './components/Intro';
 import BasicInfo from './components/BasicInfo';
 import ProfilePicture from './components/ProfilePicture';
@@ -87,14 +87,12 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <Container>
-        <div className="header">
-          <h1>Silver Encounters</h1>
-        </div>
-        <Router basename="/signup">
-          {buildWizard()}
-        </Router>
-      </Container>
+      <div className="header">
+        <img src={logo} alt="logo" height="75"/>
+      </div>
+      <Router basename="/signup">
+        {buildWizard()}
+      </Router>
     </div>
   );
 }
